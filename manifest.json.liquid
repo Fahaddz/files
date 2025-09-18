@@ -1,0 +1,17 @@
+---
+layout: null
+permalink: /manifest.json
+---
+{
+  "items": [
+{% assign comma = '' %}
+{% for file in site.static_files %}
+{% if file.path contains '/contents/' %}
+{{ comma }}    {"path": "{{ file.path | remove_first: '/contents/' }}"}
+{% assign comma = ',' %}
+{% endif %}
+{% endfor %}
+  ]
+}
+
+
